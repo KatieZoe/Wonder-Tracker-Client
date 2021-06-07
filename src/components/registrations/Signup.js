@@ -74,6 +74,7 @@ class Signup extends Component {
             value={name}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="email"
             type="text"
@@ -81,6 +82,7 @@ class Signup extends Component {
             value={email}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="password"
             type="password"
@@ -88,6 +90,7 @@ class Signup extends Component {
             value={password}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="password confirmation"
             type="password"
@@ -95,6 +98,7 @@ class Signup extends Component {
             value={password_confirmation}
             onChange={this.handleChange}
           />
+          <br/>
 
           <button placeholder="submit" type="submit">
             Sign Up

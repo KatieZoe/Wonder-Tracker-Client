@@ -73,6 +73,7 @@ class Login extends Component {
             value={name}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="email"
             type="text"
@@ -80,6 +81,7 @@ class Login extends Component {
             value={email}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="password"
             type="password"
@@ -87,6 +89,7 @@ class Login extends Component {
             value={password}
             onChange={this.handleChange}
           />
+          <br/>
           <button placeholder="submit" type="submit">
             Log In
           </button>
