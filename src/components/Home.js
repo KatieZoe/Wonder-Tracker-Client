@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Nav from './Nav';
 
 const Home = () => {
@@ -9,7 +8,7 @@ const Home = () => {
     <Nav />
 
       <h1> Wonder Tracker </h1>
-      <img src="../logo.png" />
+      <img src="../logo.png" alt="wonder tracker logo"/>
     </div>
   )
 };
