@@ -20,3 +20,11 @@ code {
   background-color: pink;
   border-radius: 1em;
 }
+
+.cohort {
+  background-color: white;
+  max-width: 400px;
+  border-radius: 1em;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

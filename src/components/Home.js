@@ -19,7 +19,8 @@ const Home = (props) => {
 
       <br/>
       { props.isAdmin ? (
-        <AdminDashboard />
+        <AdminDashboard
+        user={ props }/>
       ) : null }
       {!props.isAdmin ? (
         <button> Student Dashboard (hide before login) </button>
