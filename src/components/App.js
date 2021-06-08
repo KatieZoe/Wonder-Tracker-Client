@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from '../components/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup';
-import Profile from './profile/profile';
 
 
 class App extends Component {
@@ -15,8 +14,6 @@ class App extends Component {
       user: {},
       isAdmin: false
     };
-     this.handleLogin = this.handleLogin.bind(this);
-     this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -77,13 +74,6 @@ class App extends Component {
               loggedInStatus={ this.state.isLoggedIn } />
               )}
             />
-            <Route
-            exact path ='/profile'
-            render={props => (
-              <Profile/>
-              )}
-            />
-
           </Switch>
         </BrowserRouter>
       </div>

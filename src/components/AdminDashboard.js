@@ -8,7 +8,7 @@ class AdminDashboard extends Component {
 
   render() {
     return (
-      <AdminDashboard />
+      <h1> Admin Dashboard </h1>
     )
   }
 
