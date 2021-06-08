@@ -22,7 +22,7 @@ class AdminDashboard extends Component {
       <div>
         <h1> Admin Dashboard </h1>
         { this.state.cohorts.map((c)=> (
-            <div className="cohort"> { c.cohort_number }</div>
+            <div className="cohort" key={ c.id }> { c.cohort_number }</div>
           )) }
           <br/>
       </div>
