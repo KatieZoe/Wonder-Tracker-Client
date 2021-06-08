@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 const Home = () => {
 
   return (
-    <div>
-      <Link to='/login'> Login </Link>
-      <Link to="/signup"> Signup </Link>
+    <div className='container'>
+    <Nav />
+
+      <h1> Wonder Tracker </h1>
+      <img src="../logo.png" alt="wonder tracker logo"/>
     </div>
   )
 };

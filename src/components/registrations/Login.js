@@ -29,7 +29,7 @@ class Login extends Component {
       email: email,
       password: password
     }
-    axios.post('http://localhost:3000/login', { user }, { withCredentials: true }).then(response => {
+    axios.post('https://wonder-tracker.herokuapp.com/login', { user }, { withCredentials: true }).then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
         this.redirect()
@@ -73,6 +73,7 @@ class Login extends Component {
             value={name}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="email"
             type="text"
@@ -80,6 +81,7 @@ class Login extends Component {
             value={email}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             placeholder="password"
             type="password"
@@ -87,6 +89,7 @@ class Login extends Component {
             value={password}
             onChange={this.handleChange}
           />
+          <br/>
           <button placeholder="submit" type="submit">
             Log In
           </button>
