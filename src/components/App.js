@@ -12,7 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      user: {}
+      user: {},
+      isAdmin: false
     };
      this.handleLogin = this.handleLogin.bind(this);
      this.handleLogout = this.handleLogout.bind(this);
@@ -35,7 +36,8 @@ class App extends Component {
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data.user,
+      isAdmin: data.user.admin
     })
      // console.log("logged in user name : ", data.user.name);
   };
@@ -56,7 +58,8 @@ class App extends Component {
             exact path ='/'
             render={ props => (
               <Home { ...props }
-              loggedInStatus={ this.state.isLoggedIn } />
+              loggedInStatus={ this.state.isLoggedIn }
+              isAdmin={ this.state.isAdmin } />
             )}
             />
             <Route
