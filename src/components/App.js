@@ -13,8 +13,8 @@ class App extends Component {
       isLoggedIn: false,
       user: {}
     };
-    // this.handleLogin = this.handleLogin.bind(this);
-    // this.handleLogout = this.handleLogout.bind(this);
+     this.handleLogin = this.handleLogin.bind(this);
+     this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
   };
 
   loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(response => {
+    axios.get('http://localhost:3000/logged_in', { withCredentials: true }).then(response => {
       if(response.data.logged_in) {
         this.handleLogin(response)
       } else {
@@ -36,6 +36,7 @@ class App extends Component {
       isLoggedIn: true,
       user: data.user
     })
+     // console.log("logged in user name : ", data.user.name);
   };
 
   handleLogout = () => {
