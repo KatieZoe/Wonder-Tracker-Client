@@ -59,7 +59,8 @@ class App extends Component {
             render={ props => (
               <Home { ...props }
               loggedInStatus={ this.state.isLoggedIn }
-              isAdmin={ this.state.isAdmin } />
+              isAdmin={ this.state.isAdmin }
+              user={this.state.user}/>
             )}
             />
             <Route

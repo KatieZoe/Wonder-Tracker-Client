@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import Profile from './profile/profile';
 
 const Home = (props) => {
 
@@ -7,9 +8,10 @@ const Home = (props) => {
 
   return (
     <div className='container'>
-    <Nav
-    loggedInStatus={ props.loggedInStatus }
-    />
+      <Nav
+      loggedInStatus={ props.loggedInStatus }
+      />
+    <Profile user={props.user}/>
       <h1> Wonder Tracker </h1>
       <img src="../logo.png" alt="wonder tracker logo"/>
 
