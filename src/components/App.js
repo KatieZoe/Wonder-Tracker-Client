@@ -14,6 +14,8 @@ class App extends Component {
       user: {},
       isAdmin: false
     };
+     this.handleLogin = this.handleLogin.bind(this);
+     this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,7 @@ class App extends Component {
       user: data.user,
       isAdmin: data.user.admin
     })
+     // console.log("logged in user name : ", data.user.name);
   };
 
   handleLogout = () => {
