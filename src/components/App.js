@@ -3,7 +3,8 @@ import axios from 'axios'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from '../components/Home'
 import Login from '../components/registrations/Login'
-import Signup from '../components/registrations/Signup'
+import Signup from '../components/registrations/Signup';
+import Profile from './profile/profile';
 
 
 class App extends Component {
@@ -58,7 +59,7 @@ class App extends Component {
               <Home { ...props }
               loggedInStatus={ this.state.isLoggedIn }
               isAdmin={ this.state.isAdmin }
-              user={ this.state.user } />
+              user={ this.state.user }/>
             )}
             />
             <Route
@@ -76,6 +77,13 @@ class App extends Component {
               loggedInStatus={ this.state.isLoggedIn } />
               )}
             />
+            <Route
+            exact path ='/profile'
+            render={props => (
+              <Profile/>
+              )}
+            />
+
           </Switch>
         </BrowserRouter>
       </div>
