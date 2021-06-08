@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      user: {}
+      user: {},
+      isAdmin: false
     };
   }
 
@@ -32,7 +33,8 @@ class App extends Component {
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data.user,
+      isAdmin: data.user.admin
     })
   };
 
@@ -52,7 +54,8 @@ class App extends Component {
             exact path ='/'
             render={ props => (
               <Home { ...props }
-              loggedInStatus={ this.state.isLoggedIn } />
+              loggedInStatus={ this.state.isLoggedIn }
+              isAdmin={ this.state.isAdmin } />
             )}
             />
             <Route

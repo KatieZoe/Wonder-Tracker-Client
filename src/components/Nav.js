@@ -3,7 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 class Nav extends Component {
-
+  constructor(props){
+    super(props);
+  }
 
   _handleClick = () => {
     axios
@@ -26,13 +28,13 @@ class Nav extends Component {
       <nav className="nav">
         <div className="navlink">
           <Link to="/"> Home | </Link>
-          {!this.props.isLoggedIn ? (
+          {!this.props.loggedInStatus ? (
             <Link to="/login">Login | </Link>
           ) : null}
-          {!this.props.isLoggedIn ? (
+          {!this.props.loggedInStatus ? (
             <Link to="/signup">Sign Up | </Link>
           ) : null}
-          {this.props.isLoggedIn ? (
+          {this.props.loggedInStatus ? (
             <Link to="/logout" onClick={this._handleClick}>
               Log Out
             </Link>
