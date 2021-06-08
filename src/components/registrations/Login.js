@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography
+} from '@material-ui/core';
+
 
 class Login extends Component {
   constructor(props) {
@@ -62,49 +71,86 @@ class Login extends Component {
     const { name, email, password } = this.state
 
     return (
-      <div>
-
-      <h1> Login </h1>
-
-      <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="name"
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <input
-            placeholder="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <button placeholder="submit" type="submit">
-            Log In
-          </button>
+      <>
+        <Container maxWidth="sm">
+          <Box
+            sx={{
+              pb: 1,
+              pt: 3
+            }}
+          >
+            <Typography
+              align="center"
+              color="textSecondary"
+              variant="body1"
+            >
+              login with email address
+            </Typography>
+          </Box>
+          <form onSubmit={this.handleSubmit}>
+            <TextField
+              fullWidth
+              label="User name"
+              margin="normal"
+              name="name"
+              onChange={this.handleChange}
+              type="text"
+              value={name}
+              variant="outlined"
+            />
+            <br/>
+            <TextField
+              fullWidth
+              label="email"
+              margin="normal"
+              name="email"
+              onChange={this.handleChange}
+              type="email"
+              value={email}
+              variant="outlined"
+            />
+            <br/>
+            <TextField
+              fullWidth
+              label="Password"
+              margin="normal"
+              name="password"
+              onChange={this.handleChange}
+              type="password"
+              value={password}
+              variant="outlined"
+            />
+            <br/>
+            <Box sx={{ py: 2 }}>
+              <Button
+                color="primary"
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+              >
+                Log in
+              </Button>
+            </Box>
+            <Typography
+            color="textSecondary"
+            variant="body1"
+            >
+              Don&apos;t have an account?
+              {' '}
+            <Link
+              to="/signup"
+              variant="h6"
+            >
+              Sign up
+            </Link>
+          </Typography>
+          </form>
           <div>
-            or <Link to='/signup'>sign up</Link>
+            { this.state.errors ? this.handleErrors() : null }
           </div>
-
-         </form>
-
-         <div>
-         { this.state.errors ? this.handleErrors() : null }
-         </div>
-
-      </div>
+        </Container>
+      </>
     )
   }
 }
