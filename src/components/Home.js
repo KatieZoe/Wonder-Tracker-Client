@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import AdminDashboard from './AdminDashboard';
 
 const Home = (props) => {
 
@@ -15,7 +16,7 @@ const Home = (props) => {
 
       <br/>
       { props.isAdmin ? (
-        <button> Shae Dashboard (hide before login)</button>
+        <AdminDashboard />
       ) : null }
       {!props.isAdmin ? (
         <button> Student Dashboard (hide before login) </button>

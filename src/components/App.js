@@ -38,7 +38,6 @@ class App extends Component {
       user: data.user,
       isAdmin: data.user.admin
     })
-     // console.log("logged in user name : ", data.user.name);
   };
 
   handleLogout = () => {
@@ -58,7 +57,8 @@ class App extends Component {
             render={ props => (
               <Home { ...props }
               loggedInStatus={ this.state.isLoggedIn }
-              isAdmin={ this.state.isAdmin } />
+              isAdmin={ this.state.isAdmin }
+              user={ this.state.user } />
             )}
             />
             <Route
