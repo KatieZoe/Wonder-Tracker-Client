@@ -22,7 +22,7 @@ const Home = (props) => {
         <AdminDashboard
         user={ props }/>
       ) : null }
-      {!props.isAdmin ? (
+      {!props.isAdmin && props.loggedInStatus ? (
         <button> Student Dashboard (hide before login) </button>
       ) : null }
     </div>
