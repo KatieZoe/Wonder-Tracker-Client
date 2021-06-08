@@ -7,7 +7,7 @@ class Nav extends Component {
 
   _handleClick = () => {
     axios
-      .delete("http://localhost:3001/logout", {
+      .delete("https://wonder-tracker.herokuapp.com/logout", {
         withCredentials: true,
       })
       .then((response) => {
