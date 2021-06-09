@@ -15,7 +15,7 @@ const Home = (props) => {
       />
     <Profile user={props.user}/>
     <h1> Wonder Tracker </h1>
-    <img src="../logo.png" alt="wonder tracker logo"/>
+    <img className ="Wlogo" src="../logo.png" alt="wonder tracker logo"/>
 
     <br/>
 

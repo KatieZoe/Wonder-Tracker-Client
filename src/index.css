@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+.Wlogo {
+  height: 100px;
+}
 
 .container {
   margin:0 auto;
