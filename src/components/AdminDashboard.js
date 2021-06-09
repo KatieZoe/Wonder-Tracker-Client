@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import MediaCard from '../components/Material-UI/MediaCard'
 
 
 class AdminDashboard extends Component {
@@ -20,15 +21,15 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div>
-        <h1> Admin Dashboard </h1>
-        { this.state.cohorts.map((c)=> (
-            <div className="cohort" key={ c.id }> { c.cohort_number }</div>
-          )) }
-          <br/>
+      <h1>Admin Dashboard</h1>
+          { this.state.cohorts.map((c)=> (
+          <MediaCard
+          key={ c.id }
+          cohort={ c }>
+          </MediaCard>
+            ))}
       </div>
     )
   }
-
-
 }
 export default AdminDashboard

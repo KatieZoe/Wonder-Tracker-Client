@@ -14,15 +14,17 @@ const Home = (props) => {
       loggedInStatus={ props.loggedInStatus }
       />
     <Profile user={props.user}/>
-      <h1> Wonder Tracker </h1>
-      <img src="../logo.png" alt="wonder tracker logo"/>
+    <h1> Wonder Tracker </h1>
+    <img src="../logo.png" alt="wonder tracker logo"/>
 
-      <br/>
+    <br/>
+
       { props.isAdmin ? (
         <AdminDashboard
         user={ props }/>
       ) : null }
       {!props.isAdmin && props.loggedInStatus ? (
+
         <button> Student Dashboard (hide before login) </button>
       ) : null }
     </div>
