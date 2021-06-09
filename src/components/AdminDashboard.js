@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MediaCard from '../components/Material-UI/MediaCard'
+import MediaCard from '../components/Material-UI/MediaCard';
+import InsetDividers from '../components/Material-UI/InsetDividers';
 
 
 class AdminDashboard extends Component {
@@ -9,7 +10,9 @@ class AdminDashboard extends Component {
     this.state = {
       user: props.user.user,
       cohorts: [],
-      students: {}
+      students: {},
+      selectedCohort: {},
+      showCohort: false
     }
     this.findStudents = this.findStudents.bind(this)
   }
@@ -19,23 +22,34 @@ class AdminDashboard extends Component {
       this.setState({ cohorts: response.data.cohort });
       console.log(this.cohorts)
     });
-    axios.get('https://wonder-tracker.herokuapp.com/users').then((response) => {
-      this.setState({ students: response.data.users })
-    })
   };
 
   findStudents(props) {
-  console.log(this.state.students);
-  console.log(props)
-  }
+    this.state.cohorts.map((c) => {
+      if(c.id === props) {
+        this.setState({ selectedCohort: c, showCohort: true});
+        console.log(this.state.selectedCohort)
+      }
+    })
+    axios.get(`http://localhost:3001/cohorts/${this.state.selectedCohort.id}`).then((response) => {
+      this.setState({ students: response.data })
+      console.log(this.state.students);
+    })
+  };
 
   render() {
     return (
-      <div>
+      <div className="AdminDashboardContainer">
       <h1>Admin Dashboard</h1>
+
+
         { this.state.cohorts.map((c)=> (
         <MediaCard key={ c.id } cohort={ c } onClick={ this.findStudents }/>
       ))}
+
+      <InsetDividers />
+
+
       </div>
     )
   }

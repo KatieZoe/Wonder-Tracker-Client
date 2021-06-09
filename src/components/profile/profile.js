@@ -7,7 +7,7 @@ export default function Profile(props){
   return(
     <div>
 
-      <h1>{props.user.name}</h1>
+      <h3> {props.user.name}</h3>
 
     </div>
   )
