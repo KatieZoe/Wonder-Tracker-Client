@@ -16,12 +16,7 @@ const Home = (props) => {
   const [user, setUser] = useState(props.user);
   let history = useHistory()
   //Checking whether user has logged in or
-  const isLoggedin = localStorage.getItem('isLoggedIn');
-  console.log("isloggedin : ", isLoggedin);
-
-  if(!isLoggedin){
-    history.push('/login');
-  }
+  
 
   useEffect(() => {
     axios(`https://wonder-tracker.herokuapp.com/users/${props.user.id}`).then((response) => {
@@ -50,6 +45,7 @@ const Home = (props) => {
   }
 
   const openTasks = () => {
+    setShowJobs(false);
     setShowTasks(true);
   }
 
@@ -70,7 +66,7 @@ const Home = (props) => {
           <div className="sideNav">
             <div className="profile">
               <Profile user={ user ? user : props.user}/>
-              <Button variant="contained" color="primary" onClick={openProfileForm}>
+              <Button variant="contained" color="secondary" onClick={openProfileForm}>
                 Edit Profile
               </Button>
             </div>
@@ -83,10 +79,9 @@ const Home = (props) => {
             {showProfileForm &&
               <ProfileForm user={user ? user : props.user} onSubmit={closeProfileForm}/>
             }
+            { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
 
-              { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
-
-              { showTasks && <Tasks user={props.user.id} onSubmit={closeTasks}/> }
+            { showTasks && <Tasks user={props.user} onSubmit={closeTasks}/> }
           </div>
 
           </div>

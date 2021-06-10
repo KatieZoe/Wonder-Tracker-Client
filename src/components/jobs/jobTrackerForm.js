@@ -86,8 +86,8 @@ export default function JobTrackerForm(props) {
         value={job.job_notes ? job.job_notes : props.job.job_notes }
         variant="outlined"
       />
-      <Button variant="contained" color="primary" onClick={updateJobDetails}>
-        Update Job
+      <Button variant="contained" color="secondary" onClick={updateJobDetails}>
+        Update
       </Button>
     </>
   )
