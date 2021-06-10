@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup';
 import ProfileForm from './profile/profileForm';
+import Nav from './Nav';
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +51,9 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
+          <Nav isLoggedIn={ this.state.isLoggedIn } handleLogout={ this.handleLogout }/>
           <Switch>
+          { this.state.isLoggedIn ? (
             <Route
             exact path ='/'
             render={ props => (
@@ -61,6 +64,7 @@ class App extends Component {
               user={ this.state.user }/>
             )}
             />
+          ) : null }
             <Route
             exact path ='/login'
             render={ props => (

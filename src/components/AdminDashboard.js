@@ -27,7 +27,7 @@ class AdminDashboard extends Component {
   findStudents(props) {
     this.state.cohorts.map((c) => {
       if(c.id === props) {
-        return( this.setState({ selectedCohort: c }))
+        return this.setState({ selectedCohort: c })
       }
     })
     axios.get(`https://wonder-tracker.herokuapp.com/cohorts/user/${this.state.selectedCohort.id}`).then((response) => {
@@ -46,7 +46,7 @@ class AdminDashboard extends Component {
 
         <br/>
         <br/>
-        
+
         { this.state.showCohort ? (
           <VerticalTabs students={ this.state.students }/>
         ) : null }

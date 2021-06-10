@@ -75,7 +75,10 @@ class Login extends Component {
 
     return (
       <>
-        <Container maxWidth="sm">
+        <Container
+        maxWidth="sm"
+        className="LoginForm"
+          >
           <Box
             sx={{
               pb: 1,

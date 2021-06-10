@@ -73,7 +73,9 @@ class Signup extends Component {
 
     return (
       <>
-        <Container maxWidth="sm">
+        <Container
+        maxWidth="sm"
+        className="SignInForm">
           <Box
             sx={{
               pb: 1,
