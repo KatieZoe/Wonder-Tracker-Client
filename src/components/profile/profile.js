@@ -1,7 +1,4 @@
 import React from "react";
-//import useFetch from "./useFetch";
-
-// {"user":{"id":1,"name":"Bhavya Govind","email":"ba@ga.com","password_digest":"$2a$12$lYY.h6BsEAN11/1cgY8aPOnKmV2n9G..J26fBv69FJZA2sVRKqxq2","admin":true,"image_url":"https://miro.medium.com/fit/c/1360/1360/0*6YrUAN2jxVKwGC_-.","linkedin_url":"www.linkedin.com","github_url":"www.github.com","student_status":true,"cohort_id":1,"created_at":"2021-06-08T00:12:32.051Z","updated_at":"2021-06-08T00:12:32.051Z"}}
 
 export default function Profile(props){
   return(
@@ -9,7 +6,13 @@ export default function Profile(props){
 
       <h3> {props.user.name}</h3>
 
-    </div>
+  return(
+    <>
+      <img className="profilePic" src={props.user.image_url} alt={props.user.name} width="250px" height="250px"></img>
+      <h3>Name: {props.user.name} </h3>
+      <h3>Email: {props.user.email} </h3>
+      <h5>Linkedin: {props.user.linkedin_url}</h5>
+      <h5>Github: {props.user.github_url}</h5>
+    </>
   )
-
 }

@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from '../components/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup';
-
+import ProfileForm from './profile/profileForm';
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.loginStatus()
+    this.loginStatus();
+    this.checklogin();
   };
 
   loginStatus = () => {
@@ -39,12 +40,24 @@ class App extends Component {
   };
 
   handleLogout = () => {
+
     this.setState({
       isLoggedIn: false,
       user:{}
     })
   };
-
+  checklogin = () => {
+    const userLogginStatus = localStorage.getItem('isLoggedIn');
+    const userId = localStorage.getItem('user_id');
+    if(userId){
+      axios.get(`https://wonder-tracker.herokuapp.com/users/${userId}`).then(response => {
+        this.setState({
+          isLoggedIn: userLogginStatus,
+          user:response.data.user
+        })
+      }).catch(error => console.log('No user found:', error))
+    }
+  }
   render() {
     return (
       <div>
@@ -74,6 +87,9 @@ class App extends Component {
               loggedInStatus={ this.state.isLoggedIn } />
               )}
             />
+          <Route path="/profileform">
+            <ProfileForm/>
+          </Route>
           </Switch>
         </BrowserRouter>
       </div>

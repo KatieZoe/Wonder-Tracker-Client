@@ -13,9 +13,13 @@ code {
 }
 
 .Wlogo {
-  height: 100px;
+  height: 50px;
+  width: 50px;
 }
 
+.profilePic{
+  border-radius: 50%;
+}
 .container {
   margin:0 auto;
   min-height: 100vh;
@@ -23,7 +27,17 @@ code {
   background-color: LightCyan;
   border-radius: 1em;
 }
+.nav {
+  background-color: black;
+  text-align: left;
+  text-weight: bold;
 
+}
+.navLinks {
+
+  color: white;
+  text-decoration: none;
+}
 .CohortContainers {
   display: inline-block;
   margin: 0 auto;

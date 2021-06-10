@@ -1,0 +1,36 @@
+body{
+  background-color: blue;
+}
+.sideNav {
+  display: grid;
+  width: 450px;
+
+  grid-template-rows: 1.5fr 1fr;
+  grid-gap: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.linkDiv {
+  display: grid;
+  width: 88%;
+}
+.dashBoard {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+
+}
+.links {
+  background-color: pink;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+}
+.links:hover {
+  text-decoration: underline;
+}
+.profile {
+
+  width: 450px;
+}
