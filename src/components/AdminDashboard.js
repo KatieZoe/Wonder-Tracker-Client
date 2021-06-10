@@ -12,9 +12,13 @@ class AdminDashboard extends Component {
       cohorts: [],
       students: [],
       selectedCohort: {},
-      showCohort: false
+      showCohort: false,
+      studentProfile: {},
+      showStudent: false
     }
     this.findStudents = this.findStudents.bind(this)
+    this.showStudentProfile = this.showStudentProfile.bind(this);
+    this.checkStudent = this.checkStudent.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +40,15 @@ class AdminDashboard extends Component {
     })
   };
 
+  checkStudent() {
+    this.setState({ showStudent: true });
+  }
+
+  showStudentProfile(props) {
+    this.setState({ studentProfile: props });
+    this.checkStudent();
+  }
+
   render() {
     return (
       <div className="AdminDashboardContainer">
@@ -48,8 +61,20 @@ class AdminDashboard extends Component {
         <br/>
 
         { this.state.showCohort ? (
-          <VerticalTabs students={ this.state.students }/>
+          <VerticalTabs
+          students={ this.state.students }
+          onClick={ this.showStudentProfile }/>
         ) : null }
+
+
+        { this.state.showStudent ? (
+          <div className="ViewStudent">
+          <img src={this.state.studentProfile.image_url} width='300px'/>
+          <h1> {this.state.studentProfile.name} </h1>
+      
+          </div>
+        ) : null }
+
       </div>
     )
   }
