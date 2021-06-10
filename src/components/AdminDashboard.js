@@ -43,7 +43,10 @@ class AdminDashboard extends Component {
         { this.state.cohorts.map((c) => (
         <MediaCard key={ c.id } cohort={ c } onClick={ this.findStudents }/>
         ))}
+
         <br/>
+        <br/>
+        
         { this.state.showCohort ? (
           <VerticalTabs students={ this.state.students }/>
         ) : null }
@@ -52,8 +55,3 @@ class AdminDashboard extends Component {
   }
 }
 export default AdminDashboard
-
-
-// { this.state.students.map((s) (
-//     <p> s.name </p>
-//   ))}

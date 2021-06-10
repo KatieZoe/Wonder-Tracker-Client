@@ -2,11 +2,6 @@ import React from "react";
 
 export default function Profile(props){
   return(
-    <div>
-
-      <h3> {props.user.name}</h3>
-
-  return(
     <>
       <img className="profilePic" src={props.user.image_url} alt={props.user.name} width="250px" height="250px"></img>
       <h3>Name: {props.user.name} </h3>

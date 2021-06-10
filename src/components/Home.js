@@ -1,8 +1,8 @@
 import React,{ useState, useEffect } from 'react';
-import Nav from './Nav';
 import Profile from './profile/profile';
+import Nav from './Nav';
 import AdminDashboard from './AdminDashboard';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import ProfileForm from './profile/profileForm';
 import Jobtracker from './jobs/jobtracker';
@@ -11,36 +11,12 @@ import './css/styles.css';
 
 
 const Home = (props) => {
+
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
   const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
   const [user, setUser] = useState(props.user);
   let history = useHistory()
-  //Checking whether user has logged in or
-  const isLoggedin = localStorage.getItem('isLoggedIn');
-  console.log("isloggedin : ", isLoggedin);
-  let user_id = "";
-  if(!isLoggedin){
-    history.push('/login');
-
-    // render{
-    //   <login/>
-    // }
-    //Have to check with mai tomorrow
-
-  }else {
-    user_id = localStorage.getItem('user_id');
-  }
-
-  useEffect(() => {
-    axios(`https://wonder-tracker.herokuapp.com/users/${user_id}`).then((response) => {
-      console.log(response.data)
-      setUser(response.data.user)
-    })
-    .catch((error) => {
-      console.log("error in retriving user", error)
-    })
-  },[showProfileForm]);
 
   const openProfileForm = () => {
     setShowProfileForm(true);
@@ -65,26 +41,15 @@ const Home = (props) => {
   const closeTasks = () => {
     setShowTasks(false);
   }
-  const logout = () => {
-    console.log("write code for logout here");
-  }
 
   return (
     <div className='container'>
-      <Nav
-      loggedInStatus={ isLoggedin ? isLoggedin : true }
-      />
 
+      <Nav isLoggedIn={ props.loggedInStatus}/>
 
+      { props.isAdmin ? ( <AdminDashboard user={ props }/> ) : null }
 
-
-      <br/>
-
-      { props.isAdmin ? (
-        <AdminDashboard
-        user={ props }/>
-      ) : null }
-      {!props.isAdmin ? (
+      { !props.isAdmin ?  (
         <div class="dashBoard">
           <div class="sideNav">
             <div class="profile">
@@ -94,26 +59,20 @@ const Home = (props) => {
             <div class="linkDiv">
               <button className="links" onClick={openJobs}> Job Tracker </button>
               <button className="links" onClick={openTasks}> Tasks </button>
-              <button className="links" onClick={logout}>Logout</button>
             </div>
           </div>
+
           <div class="maindiv">
+            { showProfileForm && <ProfileForm user={props.user.id} onSubmit={closeProfileForm}/> }
 
-            {showProfileForm &&
-              <ProfileForm user={props.user.id} onSubmit={closeProfileForm}/>
-            }
+            { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
 
-            {showJobs &&
-              <Jobtracker user={props.user} onSubmit={closeJobs}/>
-            }
-
-            {showTasks &&
-              <Tasks user={props.user.id} onSubmit={closeTasks}/>
-            }
-
+            { showTasks && <Tasks user={props.user.id} onSubmit={closeTasks}/> }
           </div>
+
         </div>
-      ): null }
+      ) : null }
+
     </div>
   )
 };

@@ -18,7 +18,6 @@ class App extends Component {
 
   componentDidMount() {
     this.loginStatus();
-    this.checklogin();
   };
 
   loginStatus = () => {
@@ -40,24 +39,13 @@ class App extends Component {
   };
 
   handleLogout = () => {
-
     this.setState({
       isLoggedIn: false,
-      user:{}
+      user:{},
+      isAdmin: false
     })
   };
-  checklogin = () => {
-    const userLogginStatus = localStorage.getItem('isLoggedIn');
-    const userId = localStorage.getItem('user_id');
-    if(userId){
-      axios.get(`https://wonder-tracker.herokuapp.com/users/${userId}`).then(response => {
-        this.setState({
-          isLoggedIn: userLogginStatus,
-          user:response.data.user
-        })
-      }).catch(error => console.log('No user found:', error))
-    }
-  }
+
   render() {
     return (
       <div>
@@ -67,6 +55,7 @@ class App extends Component {
             exact path ='/'
             render={ props => (
               <Home { ...props }
+              handleLogout={ this.handleLogout }
               loggedInStatus={ this.state.isLoggedIn }
               isAdmin={ this.state.isAdmin }
               user={ this.state.user }/>
@@ -83,7 +72,8 @@ class App extends Component {
             <Route
             exact path ='/signup'
             render={props => (
-              <Signup {...props} handleLogin={ this.handleLogin }
+              <Signup {...props}
+              handleLogin={ this.handleLogin }
               loggedInStatus={ this.state.isLoggedIn } />
               )}
             />

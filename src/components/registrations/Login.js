@@ -21,6 +21,10 @@ class Login extends Component {
     }
   }
 
+  componentWillMount() {
+  return this.props.loggedInStatus ? this.redirect() : null
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target
     this.setState({
@@ -39,10 +43,7 @@ class Login extends Component {
     }
     axios.post('https://wonder-tracker.herokuapp.com/login', { user }, { withCredentials: true }).then(response => {
       if (response.data.logged_in) {
-        console.log("Data after logged in ",response.data);
         this.props.handleLogin(response.data)
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('user_id', response.data.user.id);
         this.redirect()
       } else {
         this.setState({
@@ -86,18 +87,18 @@ class Login extends Component {
               color="textSecondary"
               variant="body1"
             >
-              login with email address
+              Login
             </Typography>
           </Box>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={ this.handleSubmit }>
             <TextField
               fullWidth
               label="Name"
               margin="normal"
               name="name"
-              onChange={this.handleChange}
+              onChange={ this.handleChange }
               type="text"
-              value={name}
+              value={ name }
               variant="outlined"
             />
             <br/>
@@ -106,9 +107,9 @@ class Login extends Component {
               label="email"
               margin="normal"
               name="email"
-              onChange={this.handleChange}
+              onChange={ this.handleChange }
               type="email"
-              value={email}
+              value={ email }
               variant="outlined"
             />
             <br/>
@@ -117,13 +118,13 @@ class Login extends Component {
               label="Password"
               margin="normal"
               name="password"
-              onChange={this.handleChange}
+              onChange={ this.handleChange }
               type="password"
-              value={password}
+              value={ password }
               variant="outlined"
             />
             <br/>
-            <Box sx={{ py: 2 }}>
+            <Box sx={ { py: 2 } }>
               <Button
                 color="primary"
                 fullWidth
