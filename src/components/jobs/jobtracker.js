@@ -1,45 +1,66 @@
 import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/styles.css';
+import {
+  Button,
+  Container,
+  TextField,
+  Typography
+} from '@material-ui/core';
+import JobTrackerForm from './jobTrackerForm';
+
 export default function Jobtracker(props) {
 
-  const [jobsApplied, setJobsApplied] = useState([{
-    "collateral": "1provided resume and cover letter url",
-    "company_name": "1Alpha",
-    "created_at": "2021-06-09T05:08:36.777Z",
-    "id": 1,
-    "jd": "Need of junior developer but should work as most senior developer, and should work 24*7 tech stack: entire technology ,salary: should work for free",
-    "job_notes": "Moved to another round and asked me to build their project as assesment",
-    "job_title": "Junior web developer",
-    "status": 1,
-    "updated_at": "2021-06-09T05:08:36.777Z",
-    "user_id": 5
-  }]);
+  const [jobsApplied, setJobsApplied] = useState([]);
+  const [isEditEnabled, setIsEditEnabled] = useState(false);
+  const [jobId, setJobId] = useState(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
       console.log(props.userId);
-      const jobs = await axios(`http://localhost:3001/jobtrackers/user/5`);
+      const jobs = await axios(`http://wonder-tracker.herokuapp.com/jobtrackers/user/${props.user.id}`);
       console.log("jobs from server bassed on user",jobs);
        //jobsApplied = jobs.data.jobtracker;
       setJobsApplied(jobs.data.jobtracker );
     };
 
     fetchJobs();
-  }, []);
+  }, [isEditEnabled,jobId]);
+  const editJobDetails = (jobId) => {
+    setIsEditEnabled(true);
+    setJobId(jobId)
+  }
+  const hideJobForm = () => {
+    setIsEditEnabled(false);
+  }
 
   return(
     <div className="jobTracker">
-      <p>Jobs tracker Page</p>
-      {jobsApplied.map((job) => {
+      <h2>Jobs tracker Page</h2>
+      {jobsApplied.map((job, index) => {
         return(
-          <div>
-            <p>Name: {job.company_name}</p>
-            <p>Title: {job.job_title}</p>
-          </div>
+          <>
+            {!isEditEnabled ?  (
+              <div class="jobDiv">
+                <p><span>Name: </span> {job.company_name}</p>
+                <p><span>Title: </span> {job.job_title}</p>
+                <p><span>Resume and coverletter:</span> {job.job_collateral}</p>
+                <p><span>Job Description: </span> {job.jd}</p>
+                <p><span>Job Notes: </span> {job.job_notes}</p>
+                <Button variant="contained" color="primary" onClick={() => editJobDetails(job.id)}>
+                  Edit Job
+                </Button>
+              </div>
+
+            ): jobId === job.id ? (
+              <JobTrackerForm job={job} onUpdate={hideJobForm}/>
+            ) : ''}
+
+          </>
+
         )
       })}
-      <h1>This is end of jobTracker</h1>
+
     </div>
   )
 

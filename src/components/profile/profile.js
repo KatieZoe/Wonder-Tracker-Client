@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Profile(props){
+
   return(
     <>
       <img className="profilePic" src={props.user.image_url} alt={props.user.name} width="250px" height="250px"></img>

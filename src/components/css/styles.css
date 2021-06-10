@@ -16,22 +16,22 @@ body{
 }
 .sideNav {
   display: grid;
-  width: 450px;
-
-  grid-template-rows: 1.5fr 1fr;
-  grid-gap: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
+  width: 400px;
+  grid-row-gap: 10px;
+  grid-template-rows: 1fr 0.2fr;
+  grid-row-gap: 2px;
 }
 .linkDiv {
   display: grid;
   width: 88%;
+
 }
+
 .dashBoard {
   display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  width: 85%;
+  grid-template-columns: 0.8fr 1.2fr;
+  grid-column-gap: 5px;
 
 }
 .links {

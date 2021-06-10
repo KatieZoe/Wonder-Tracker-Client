@@ -12,32 +12,23 @@ export default function ProfileForm(props) {
 
   const[user, setUser] = useState(props.user);
   const handleChange = (e, name) => {
-    console.log("handle al changes to the user");
-    console.log("NAME", name);
-    //setUser({}{[name]: e.target.value});
     setUser({...user, [name]: e.target.value });
     console.log(user);
-    // setUser(user => [...user, {[name]: e.target.value}])
-    // history.push('/profile');
-
-
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    //let id = history.location.state.user.id;
-
     const postHeaders = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
     axios.put(`http://wonder-tracker.herokuapp.com/users/${props.user.id}`, {user}, { headers: postHeaders }).then((response) => {
-      let user = response.data;
-      console.log("updated user information", user);
+
     }).catch((error) => {
       console.log("error ocuured in updating user reason: ", error);
     })
     props.onSubmit(false);
   }
+  console.log("User information",props.user);
   return(
 
     <Container maxWidth="sm">
