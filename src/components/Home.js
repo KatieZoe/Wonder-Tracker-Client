@@ -22,7 +22,7 @@ const Home = (props) => {
   let user_id = "";
   if(!isLoggedin){
     history.push('/login');
-    
+
     // render{
     //   <login/>
     // }
@@ -74,11 +74,15 @@ const Home = (props) => {
       <Nav
       loggedInStatus={ isLoggedin ? isLoggedin : true }
       />
-      <h1> Wonder Tracker </h1>
+
+
+
 
       <br/>
+
       { props.isAdmin ? (
-        <AdminDashboard />
+        <AdminDashboard
+        user={ props }/>
       ) : null }
       {!props.isAdmin ? (
         <div class="dashBoard">
@@ -87,10 +91,10 @@ const Home = (props) => {
               <Profile user={user ? user : props.user}/>
               <button onClick={openProfileForm}> Edit Profile</button>
             </div>
-            <div class="links">
-              <button onClick={openJobs}> Job Tracker </button>
-              <button onClick={openTasks}> Tasks </button>
-              <button onClick={logout}>Logout</button>
+            <div class="linkDiv">
+              <button className="links" onClick={openJobs}> Job Tracker </button>
+              <button className="links" onClick={openTasks}> Tasks </button>
+              <button className="links" onClick={logout}>Logout</button>
             </div>
           </div>
           <div class="maindiv">

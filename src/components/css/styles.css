@@ -3,12 +3,14 @@ body{
 }
 .sideNav {
   display: grid;
-  grid-template-columns: 500px;
+  width: 450px;
+
   grid-template-rows: 1.5fr 1fr;
   grid-gap: 15px;
-  background-color: red;
+  border: 1px solid black;
+  border-radius: 5px;
 }
-.links {
+.linkDiv {
   display: grid;
   width: 88%;
 }
@@ -17,5 +19,18 @@ body{
   width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
-  background-color: red;
+
+}
+.links {
+  background-color: pink;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+}
+.links:hover {
+  text-decoration: underline;
+}
+.profile {
+
+  width: 450px;
 }

@@ -6,9 +6,7 @@ class Nav extends Component {
   constructor(props){
     super(props);
   }
-  componentWillMount() {
-    let isLoggedin = localStorage.get
-  }
+
   _handleClick = () => {
     axios
       .delete("https://wonder-tracker.herokuapp.com/logout", {
@@ -34,15 +32,16 @@ class Nav extends Component {
     return (
       <nav className="nav">
         <div className="navlink">
-          <Link to="/"> Home | </Link>
+          <img className ="Wlogo" src="../logo.png" alt="wonder tracker logo"/>
+          <Link className="navLinks" to="/"> Home | </Link>
           {!this.props.loggedInStatus ? (
-            <Link to="/login">Login | </Link>
+            <Link  className="navLinks" to="/login">Login | </Link>
           ) : null}
           {!this.props.loggedInStatus ? (
-            <Link to="/signup">Sign Up  </Link>
+            <Link className="navLinks" to="/signup">Sign Up  </Link>
           ) : null}
           {this.props.loggedInStatus ? (
-            <Link to="/login" onClick={this._handleClick}>
+            <Link className="navLinks" to="/login" onClick={this._handleClick}>
               Log Out
             </Link>
           ) : null}
