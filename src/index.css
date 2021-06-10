@@ -20,6 +20,9 @@ code {
 .profilePic{
   border-radius: 50%;
 }
+.jobDiv{
+  text-align: left;
+}
 .container {
   margin:0 auto;
   min-height: 100vh;

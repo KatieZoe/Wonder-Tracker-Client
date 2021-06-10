@@ -1,5 +1,5 @@
 body{
-  background-color: blue;
+  background-color: lightcyan;
 }
 .sideNav {
   display: grid;
@@ -17,12 +17,12 @@ body{
 .dashBoard {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-gap: 5px;
 
 }
 .links {
-  background-color: pink;
+  background-color: lightcyan;
   font-weight: bold;
   border: none;
   font-size: 20px;

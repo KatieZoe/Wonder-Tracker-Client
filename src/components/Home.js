@@ -19,21 +19,13 @@ const Home = (props) => {
   //Checking whether user has logged in or
   const isLoggedin = localStorage.getItem('isLoggedIn');
   console.log("isloggedin : ", isLoggedin);
-  let user_id = "";
+
   if(!isLoggedin){
     history.push('/login');
-
-    // render{
-    //   <login/>
-    // }
-    //Have to check with mai tomorrow
-
-  }else {
-    user_id = localStorage.getItem('user_id');
   }
 
   useEffect(() => {
-    axios(`https://wonder-tracker.herokuapp.com/users/${user_id}`).then((response) => {
+    axios(`https://wonder-tracker.herokuapp.com/users/${props.user.id}`).then((response) => {
       console.log(response.data)
       setUser(response.data.user)
     })
@@ -74,12 +66,6 @@ const Home = (props) => {
       <Nav
       loggedInStatus={ isLoggedin ? isLoggedin : true }
       />
-
-
-
-
-      <br/>
-
       { props.isAdmin ? (
         <AdminDashboard
         user={ props }/>
@@ -88,7 +74,7 @@ const Home = (props) => {
         <div class="dashBoard">
           <div class="sideNav">
             <div class="profile">
-              <Profile user={user ? user : props.user}/>
+              <Profile user={ user ? user : props.user}/>
               <button onClick={openProfileForm}> Edit Profile</button>
             </div>
             <div class="linkDiv">
@@ -100,7 +86,7 @@ const Home = (props) => {
           <div class="maindiv">
 
             {showProfileForm &&
-              <ProfileForm user={props.user.id} onSubmit={closeProfileForm}/>
+              <ProfileForm user={user ? user : props.user} onSubmit={closeProfileForm}/>
             }
 
             {showJobs &&

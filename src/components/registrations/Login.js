@@ -41,8 +41,6 @@ class Login extends Component {
       if (response.data.logged_in) {
         console.log("Data after logged in ",response.data);
         this.props.handleLogin(response.data)
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('user_id', response.data.user.id);
         this.redirect()
       } else {
         this.setState({
@@ -54,7 +52,7 @@ class Login extends Component {
 
 
   redirect = () => {
-    this.props.history.push('/')
+    this.props.history.push('/');
   };
 
   handleErrors = () => {

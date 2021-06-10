@@ -1,10 +1,6 @@
 import React from "react";
 
 export default function Profile(props){
-  return(
-    <div>
-
-      <h3> {props.user.name}</h3>
 
   return(
     <>
