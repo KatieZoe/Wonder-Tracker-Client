@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 export default function VerticalTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  console.log("PROPS of vertical tabs", props);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,8 +63,6 @@ export default function VerticalTabs(props) {
   return (
     <>
     <div className={classes.root}>
-
-
           <Tabs
             orientation="vertical"
             variant="scrollable"
@@ -78,19 +75,19 @@ export default function VerticalTabs(props) {
             <Tab label={ s.name} {...a11yProps(0)} />
           ))}
           </Tabs>
-
           { props.students.map((s, index) => (
           <TabPanel value={value} index={ index } className="TabPanel">
+            <div>
             <p> <span>Name:</span> { s.name } </p>
             <p> <span>Email:</span> { s.email } </p>
-            <p> <span>LinkedIn:</span> { s.linkedin_url }</p>
+            <p> <span>LinkedIn:</span> {s.linkedin_url} </p>
+            </div>
           <Button
-          onClick={(s) => { alert('clicked') }}
+          onClick={ () => { props.onClick(s) }}
           variant="contained" color="secondary"
           >Student Profile
           </Button>
           </TabPanel>
-
       ))}
       </div>
     </>
