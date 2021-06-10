@@ -1,0 +1,21 @@
+body{
+  background-color: blue;
+}
+.sideNav {
+  display: grid;
+  grid-template-columns: 500px;
+  grid-template-rows: 1.5fr 1fr;
+  grid-gap: 15px;
+  background-color: red;
+}
+.links {
+  display: grid;
+  width: 88%;
+}
+.dashBoard {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  background-color: red;
+}

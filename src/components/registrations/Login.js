@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   TextField,
   Typography
 } from '@material-ui/core';
@@ -40,7 +39,10 @@ class Login extends Component {
     }
     axios.post('https://wonder-tracker.herokuapp.com/login', { user }, { withCredentials: true }).then(response => {
       if (response.data.logged_in) {
+        console.log("Data after logged in ",response.data);
         this.props.handleLogin(response.data)
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('user_id', response.data.user.id);
         this.redirect()
       } else {
         this.setState({
@@ -90,7 +92,7 @@ class Login extends Component {
           <form onSubmit={this.handleSubmit}>
             <TextField
               fullWidth
-              label="User name"
+              label="Name"
               margin="normal"
               name="name"
               onChange={this.handleChange}
@@ -132,20 +134,20 @@ class Login extends Component {
                 Log in
               </Button>
             </Box>
-            <Typography
-            color="textSecondary"
-            variant="body1"
-            >
-              Don&apos;t have an account?
-              {' '}
-            <Link
-              to="/signup"
-              variant="h6"
-            >
-              Sign up
-            </Link>
-          </Typography>
           </form>
+          <Typography
+          color="textSecondary"
+          variant="body1"
+          >
+            Don&apos;t have an account?
+            {' '}
+          <Link
+            to="/signup"
+            variant="h6"
+          >
+            Sign up
+          </Link>
+        </Typography>
           <div>
             { this.state.errors ? this.handleErrors() : null }
           </div>
