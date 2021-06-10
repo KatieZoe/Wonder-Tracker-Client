@@ -20,7 +20,7 @@ export default function Jobtracker(props) {
   useEffect(() => {
     const fetchJobs = async () => {
 
-      const jobs = await axios(`http://wonder-tracker.herokuapp.com/jobtrackers/user/${props.user.id}`);
+      const jobs = await axios(`https://wonder-tracker.herokuapp.com/jobtrackers/user/${props.user.id}`);
       console.log("jobs from server bassed on user",jobs);
        //jobsApplied = jobs.data.jobtracker;
       setJobsApplied(jobs.data.jobtracker );

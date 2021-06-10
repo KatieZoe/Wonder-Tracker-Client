@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function JobTrackerForm(props) {
   const[task, setTask] = useState(props.task);
-  
+
   const handleChange = (e, name) => {
     setTask({...task, [name]: e.target.value });
 
@@ -21,7 +21,7 @@ export default function JobTrackerForm(props) {
       'Content-Type': 'application/json'
     }
     console.log('task', task);
-    axios.put(`http://wonder-tracker.herokuapp.com/tasks/${props.task.id}`, task, { headers: postHeaders }).then((response) => {
+    axios.put(`https://wonder-tracker.herokuapp.com/tasks/${props.task.id}`, task, { headers: postHeaders }).then((response) => {
 
     }).catch((error) => {
       console.log("error ocuured in updating user reason: ", error);

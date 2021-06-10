@@ -14,7 +14,7 @@ export default function Tasks(props) {
 
     const fetchTasks = async () => {
       console.log(props.userId);
-      const tasks = await axios(`http://wonder-tracker.herokuapp.com/tasks/user/${props.user.id}`);
+      const tasks = await axios(`https://wonder-tracker.herokuapp.com/tasks/user/${props.user.id}`);
         console.log("Tasks from server bassed on user",tasks);
         setTasks(tasks.data.tasks);
 
@@ -29,7 +29,7 @@ export default function Tasks(props) {
   }
   const updateTasks = async () => {
     setShowEditForm(false);
-    const tasks = await axios(`http://wonder-tracker.herokuapp.com/tasks/user/${props.user.id}`);      setTasks(tasks.data.tasks);
+    const tasks = await axios(`https://wonder-tracker.herokuapp.com/tasks/user/${props.user.id}`);      setTasks(tasks.data.tasks);
   }
   return(
     <>

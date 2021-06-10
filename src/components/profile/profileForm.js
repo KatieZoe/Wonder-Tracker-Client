@@ -21,7 +21,7 @@ export default function ProfileForm(props) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    axios.put(`http://wonder-tracker.herokuapp.com/users/${props.user.id}`, {user}, { headers: postHeaders }).then((response) => {
+    axios.put(`https://wonder-tracker.herokuapp.com/users/${props.user.id}`, {user}, { headers: postHeaders }).then((response) => {
 
     }).catch((error) => {
       console.log("error ocuured in updating user reason: ", error);

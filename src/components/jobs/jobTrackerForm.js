@@ -20,7 +20,7 @@ export default function JobTrackerForm(props) {
       'Content-Type': 'application/json'
     }
     console.log('job', job);
-    axios.put(`http://wonder-tracker.herokuapp.com/jobtrackers/${props.job.id}`, job, { headers: postHeaders }).then((response) => {
+    axios.put(`https://wonder-tracker.herokuapp.com/jobtrackers/${props.job.id}`, job, { headers: postHeaders }).then((response) => {
 
     }).catch((error) => {
       console.log("error ocuured in updating user reason: ", error);
