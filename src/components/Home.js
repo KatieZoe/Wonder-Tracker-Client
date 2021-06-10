@@ -1,19 +1,18 @@
-import React,{ useState, useEffect } from 'react';
-import Nav from './Nav';
+import React,{ useState, useEffect} from 'react';
 import Profile from './profile/profile';
 import AdminDashboard from './AdminDashboard';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import ProfileForm from './profile/profileForm';
 import Jobtracker from './jobs/jobtracker';
 import Tasks from './tasks/tasks.js';
 import './css/styles.css';
-
-
+import axios from 'axios';
+import {useHistory} from 'react-router-dom';
+import {Button} from '@material-ui/core';
 const Home = (props) => {
+
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
-  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
+  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : true);
   const [user, setUser] = useState(props.user);
   let history = useHistory()
   //Checking whether user has logged in or
@@ -57,50 +56,49 @@ const Home = (props) => {
   const closeTasks = () => {
     setShowTasks(false);
   }
-  const logout = () => {
-    console.log("write code for logout here");
-  }
+
 
   return (
     <div className='container'>
-      <Nav
-      loggedInStatus={ isLoggedin ? isLoggedin : true }
-      />
+
       { props.isAdmin ? (
         <AdminDashboard
         user={ props }/>
       ) : null }
       {!props.isAdmin ? (
-        <div class="dashBoard">
-          <div class="sideNav">
-            <div class="profile">
+        <div className="dashBoard">
+          <div className="sideNav">
+            <div className="profile">
               <Profile user={ user ? user : props.user}/>
-              <button onClick={openProfileForm}> Edit Profile</button>
+              <Button variant="contained" color="primary" onClick={openProfileForm}>
+                Edit Profile
+              </Button>
             </div>
             <div class="linkDiv">
               <button className="links" onClick={openJobs}> Job Tracker </button>
               <button className="links" onClick={openTasks}> Tasks </button>
-              <button className="links" onClick={logout}>Logout</button>
             </div>
           </div>
-          <div class="maindiv">
-
+          <div className="mainDiv">
             {showProfileForm &&
               <ProfileForm user={user ? user : props.user} onSubmit={closeProfileForm}/>
             }
 
-            {showJobs &&
-              <Jobtracker user={props.user} onSubmit={closeJobs}/>
-            }
+              { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
 
-            {showTasks &&
-              <Tasks user={props.user.id} onSubmit={closeTasks}/>
-            }
+              { showTasks && <Tasks user={props.user.id} onSubmit={closeTasks}/> }
+          </div>
 
           </div>
-        </div>
-      ): null }
+        ) : null }
+
     </div>
   )
 };
 export default Home
+
+
+// <div className="WelcomeMessage">
+// <h1> Welcome to Wonder Tracker </h1>
+// <p> The student outcomes tracker created especially for the GA outcomes program </p>
+// </div>

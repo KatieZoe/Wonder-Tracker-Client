@@ -1,24 +1,37 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;1,400&display=swap');
+
 body{
-  background-color: lightcyan;
+  background-color: LightCyan;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+.LoginForm, .SignInForm {
+  padding-top: 20px;
+}
+
+.WelcomeMessage {
+  text-align: center;
 }
 .sideNav {
   display: grid;
-  width: 450px;
-
-  grid-template-rows: 1.5fr 1fr;
-  grid-gap: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
+  width: 400px;
+  grid-row-gap: 10px;
+  grid-template-rows: 1fr 0.2fr;
+  grid-row-gap: 2px;
 }
 .linkDiv {
   display: grid;
   width: 88%;
+
 }
+
 .dashBoard {
   display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 5px;
+  width: 85%;
+  grid-template-columns: 0.8fr 1.2fr;
+  grid-column-gap: 5px;
 
 }
 .links {
@@ -31,6 +44,58 @@ body{
   text-decoration: underline;
 }
 .profile {
-
   width: 450px;
+}
+
+.Wlogo {
+  height: 70px;
+  padding-right: 20px;
+}
+
+.profilePic{
+  border-radius: 50%;
+}
+.container {
+  margin:0 auto;
+  min-height: 100vh;
+  text-align: center;
+  background-color: LightCyan;
+  border-radius: 1em;
+}
+.nav {
+  background-color: black;
+  text-align: left;
+  padding: 1em;
+}
+div.navlink a {
+  color: white;
+  padding: 5px 5px 5px 5px;
+  border-radius: 0.2em;
+  text-decoration: none;
+  margin: 10px 10px 30px 10px;
+  position: relative;
+}
+
+.navlink {
+  padding: 10px
+}
+.CohortContainers {
+  display: inline-block;
+  margin: 0 auto;
+  margin: 10px 10px 10px 10px;
+}
+
+.AdminDashboardContainer {
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.TabPanel {
+  text-align: left;
+}
+
+.TabPanel span {
+  font-weight: bold;
 }

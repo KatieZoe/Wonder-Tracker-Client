@@ -5,17 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  // const { students , value, index, ...other } = props;
-  console.log("props", props)
-  // console.log("children", children);
-  console.log("Value", value);
-  console.log("Index", index);
-  // console.log("...other", ...othver);
-  console.log('students: ', children);
-  // let student = students[0];
 
   return (
     <div
@@ -87,11 +80,15 @@ export default function VerticalTabs(props) {
           </Tabs>
 
           { props.students.map((s, index) => (
-          <TabPanel value={value} index={ index }>
-            <h4> Name: { s.name } </h4>
-            <p> Email: { s.email } </p>
-            <p> LinkedIn: { s.linkedin_url } </p>
-            <p> GitHub: { s.github_url } </p>
+          <TabPanel value={value} index={ index } className="TabPanel">
+            <p> <span>Name:</span> { s.name } </p>
+            <p> <span>Email:</span> { s.email } </p>
+            <p> <span>LinkedIn:</span> { s.linkedin_url }</p>
+          <Button
+          onClick={(s) => { alert('clicked') }}
+          variant="contained" color="secondary"
+          >Student Profile
+          </Button>
           </TabPanel>
 
       ))}
