@@ -19,7 +19,7 @@ export default function AddJob(props) {
       'Content-Type': 'application/json'
     }
     job.user_id = props.userId;
-    axios.post(`http://wonder-tracker.herokuapp.com/jobtrackers/`, job, { headers: postHeaders }).then((response) => {
+    axios.post(`https://wonder-tracker.herokuapp.com/jobtrackers/`, job, { headers: postHeaders }).then((response) => {
 
     }).catch((error) => {
       console.log("error ocuured in updating user reason: ", error);
