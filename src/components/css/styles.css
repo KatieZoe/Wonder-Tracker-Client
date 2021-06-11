@@ -24,7 +24,21 @@ body{
 .linkDiv {
   display: grid;
   width: 88%;
+}
 
+.profilePic{
+  border-radius: 50%;
+}
+
+.jobDiv{
+  text-align: left;
+}
+
+.jobDiv span{
+  font-family: sans-serif;
+}
+.profileDiv span {
+  font-family: sans-serif;
 }
 
 .dashBoard {

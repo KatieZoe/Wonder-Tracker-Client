@@ -4,6 +4,7 @@ import AdminDashboard from './AdminDashboard';
 import ProfileForm from './profile/profileForm';
 import Jobtracker from './jobs/jobtracker';
 import Tasks from './tasks/tasks.js';
+import { Button } from '@material-ui/core'
 import './css/styles.css';
 
 
@@ -12,7 +13,7 @@ const Home = (props) => {
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
   const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
-  const [user] = useState(props.user);
+  const [user, setUser] = useState(props.user);
 
   console.log(props.loggedInStatus)
 
@@ -33,6 +34,7 @@ const Home = (props) => {
   }
 
   const openTasks = () => {
+    setShowJobs(false);
     setShowTasks(true);
   }
 
@@ -43,28 +45,32 @@ const Home = (props) => {
 
   return (
     <div className='container'>
-        { props.isAdmin ? ( <AdminDashboard user={ props }/> ) : null }
 
-        { !props.isAdmin ?  (
-          <div className="dashBoard">
-            <div className="sideNav">
-              <div className="profile">
-                <Profile user={user ? user : props.user}/>
-                <button onClick={openProfileForm}> Edit Profile</button>
-              </div>
-              <div className="linkDiv">
-                <button className="links" onClick={openJobs}> Job Tracker </button>
-                <button className="links" onClick={openTasks}> Tasks </button>
-              </div>
+      { props.isAdmin ? (  <AdminDashboard user={ props }/> ) : null }
+
+      {!props.isAdmin ? (
+        <div className="dashBoard">
+          <div className="sideNav">
+            <div className="profile">
+              <Profile user={ user ? user : props.user}/>
+              <Button variant="contained" color="secondary" onClick={openProfileForm}>
+                Edit Profile
+              </Button>
             </div>
-
-            <div className="maindiv">
-              { showProfileForm && <ProfileForm user={props.user.id} onSubmit={closeProfileForm}/> }
-
-              { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
-
-              { showTasks && <Tasks user={props.user.id} onSubmit={closeTasks}/> }
+            <div class="linkDiv">
+              <button className="links" onClick={openJobs}> Job Tracker </button>
+              <button className="links" onClick={openTasks}> Tasks </button>
             </div>
+          </div>
+
+          <div className="mainDiv">
+            {showProfileForm &&
+              <ProfileForm user={user ? user : props.user} onSubmit={closeProfileForm}/>
+            }
+            { showJobs && <Jobtracker user={props.user} onSubmit={closeJobs}/> }
+
+            { showTasks && <Tasks user={props.user} onSubmit={closeTasks}/> }
+          </div>
 
           </div>
         ) : null }
