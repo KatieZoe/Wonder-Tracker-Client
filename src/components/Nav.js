@@ -37,7 +37,7 @@ class Nav extends Component {
                 <Link to="/signup">Sign Up</Link>
               ) : null}
               {this.props.isLoggedIn ? (
-                <Link to="/logout" onClick={this._handleClick}>
+                <Link to="/login" onClick={this._handleClick}>
                   Log Out
                 </Link>
               ) : null}
