@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import Profile from './profile/profile';
 import AdminDashboard from './AdminDashboard';
 import ProfileForm from './profile/profileForm';
@@ -11,7 +11,7 @@ const Home = (props) => {
 
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
-  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
+  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : true);
   const [user, setUser] = useState(props.user);
 
 
