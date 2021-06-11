@@ -27,7 +27,7 @@ export default function Jobtracker(props) {
     };
 
     fetchJobs();
-  }, []);
+  }, [isEditEnabled]);
   const editJobDetails = (jobId) => {
     setIsEditEnabled(true);
     setIsAddJob(false);

@@ -18,18 +18,22 @@ body{
   display: grid;
   width: 400px;
   grid-row-gap: 10px;
-  grid-template-rows: 1fr 0.2fr;
+  grid-template-rows: max-content 1fr;
   grid-row-gap: 2px;
 }
 .linkDiv {
-  display: grid;
-  width: 88%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 10px;
 
 }
 
 .dashBoard {
   display: grid;
-  width: 85%;
+  width: 100%;
   grid-template-columns: 0.8fr 1.2fr;
   grid-column-gap: 5px;
 
@@ -39,6 +43,7 @@ body{
   font-weight: bold;
   border: none;
   font-size: 20px;
+  padding: 10px;
 }
 .links:hover {
   text-decoration: underline;
