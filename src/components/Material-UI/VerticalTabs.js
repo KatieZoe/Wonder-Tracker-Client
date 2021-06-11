@@ -72,11 +72,11 @@ export default function VerticalTabs(props) {
             className={classes.tabs}
           >
           { props.students.map((s, index) => (
-            <Tab label={ s.name} {...a11yProps(0)} />
+            <Tab key={s.id} label={ s.name} {...a11yProps(0)} />
           ))}
           </Tabs>
           { props.students.map((s, index) => (
-          <TabPanel value={value} index={ index } className="TabPanel">
+          <TabPanel key={s.id} value={value} index={ index } className="TabPanel">
             <div>
             <p> <span>Name:</span> { s.name } </p>
             <p> <span>Email:</span> { s.email } </p>
