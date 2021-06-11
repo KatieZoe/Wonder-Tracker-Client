@@ -1,17 +1,17 @@
-import React,{ useState, useEffect} from 'react';
+import React,{ useState } from 'react';
 import Profile from './profile/profile';
 import AdminDashboard from './AdminDashboard';
 import ProfileForm from './profile/profileForm';
 import Jobtracker from './jobs/jobtracker';
 import Tasks from './tasks/tasks.js';
+import { Button } from '@material-ui/core'
 import './css/styles.css';
 import axios from 'axios';
-import {Button} from '@material-ui/core';
 const Home = (props) => {
 
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
-  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : true);
+  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
   const [user, setUser] = useState(props.user);
 
 
@@ -62,10 +62,8 @@ const Home = (props) => {
   return (
     <div className='container'>
 
-      { props.isAdmin ? (
-        <AdminDashboard
-        user={ props }/>
-      ) : null }
+      { props.isAdmin ? (  <AdminDashboard user={ props }/> ) : null }
+
       {!props.isAdmin ? (
         <div className="dashBoard">
           <div className="sideNav">
@@ -80,6 +78,7 @@ const Home = (props) => {
               <button className="links" onClick={openTasks}> Tasks </button>
             </div>
           </div>
+
           <div className="mainDiv">
             {showProfileForm &&
               <ProfileForm user={user ? user : props.user} onSubmit={closeProfileForm}/>
@@ -96,9 +95,3 @@ const Home = (props) => {
   )
 };
 export default Home
-
-
-// <div className="WelcomeMessage">
-// <h1> Welcome to Wonder Tracker </h1>
-// <p> The student outcomes tracker created especially for the GA outcomes program </p>
-// </div>

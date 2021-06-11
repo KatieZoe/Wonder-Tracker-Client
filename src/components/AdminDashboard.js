@@ -14,7 +14,9 @@ class AdminDashboard extends Component {
       selectedCohort: {},
       showCohort: false,
       studentProfile: {},
-      showStudent: false
+      showStudent: false,
+      showJobs: true,
+      studentJobs: []
     }
     this.findStudents = this.findStudents.bind(this)
     this.showStudentProfile = this.showStudentProfile.bind(this);
@@ -42,6 +44,11 @@ class AdminDashboard extends Component {
 
   checkStudent() {
     this.setState({ showStudent: true });
+    axios.get(`http://wonder-tracker.herokuapp.com/jobtrackers/user/${this.state.studentProfile.id}`).then((response) => {
+      console.log(response.data.jobtracker)
+      this.setState({ studentJobs: response.data.jobtracker, showJobs: true });
+      console.log('Student Jobs', this.state.studentJobs)
+    })
   }
 
   showStudentProfile(props) {
@@ -71,9 +78,22 @@ class AdminDashboard extends Component {
           <div className="ViewStudent">
           <img src={this.state.studentProfile.image_url} width='300px'/>
           <h1> {this.state.studentProfile.name} </h1>
-      
           </div>
         ) : null }
+
+        <div className="ShowStudentJobs">
+        { !this.state.showJob ? (
+           this.state.studentJobs.map((job) =>
+           <div>
+           <p> <span>Company Name:</span> {job.company_name} </p>
+           <p> <span>Job Title: </span> {job.job_title} </p>
+           <p> <span>Job Description: </span> {job.jd} </p>
+           <p> <span>Job Notes: </span>{job.job_notes} </p>
+           <br/>
+           </div>
+          )
+      ) : <p> <br/>Jobs.... </p> }
+      </div>
 
       </div>
     )
