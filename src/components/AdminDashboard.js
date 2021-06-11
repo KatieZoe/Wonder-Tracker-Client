@@ -44,7 +44,7 @@ class AdminDashboard extends Component {
 
   checkStudent() {
     this.setState({ showStudent: true });
-    axios.get(`http://wonder-tracker.herokuapp.com/jobtrackers/user/${this.state.studentProfile.id}`).then((response) => {
+    axios.get(`https://wonder-tracker.herokuapp.com/jobtrackers/user/${this.state.studentProfile.id}`).then((response) => {
       console.log(response.data.jobtracker)
       this.setState({ studentJobs: response.data.jobtracker, showJobs: true });
       console.log('Student Jobs', this.state.studentJobs)
