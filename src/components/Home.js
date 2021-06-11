@@ -11,7 +11,7 @@ const Home = (props) => {
 
   const [showProfileForm, setShowProfileForm] = useState(props.showProfileForm ? props.showProfileForm : false);
   const [showTasks, setShowTasks] = useState(props.showTasks ? props.showTasks : false);
-  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : false);
+  const [showJobs, setShowJobs] = useState(props.showJobs ? props.showJobs : true);
   const [user, setUser] = useState(props.user);
 
 
